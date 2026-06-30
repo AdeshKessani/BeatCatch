@@ -1,0 +1,22 @@
+[
+  {"id": "001", "title": "In This Bih", "artist": "Chris Lorenzo & Kah-Lo", "bpm": 129.2, "key": "F#", "energy": 3.1, "valence": 0.618, "danceability": 0.973, "genre": "house", "spotify_url": "https://open.spotify.com/track/3nqQXoyQOWXiESFLlDF1hG", "youtube_url": "https://youtube.com/watch?v=example"},
+  {"id": "002", "title": "Losing It", "artist": "Fisher", "bpm": 128.0, "key": "F#", "energy": 3.0, "valence": 0.65, "danceability": 0.96, "genre": "house", "spotify_url": "", "youtube_url": ""},
+  {"id": "003", "title": "Cola", "artist": "CamelPhat & Elderbrook", "bpm": 122.0, "key": "G", "energy": 2.5, "valence": 0.45, "danceability": 0.91, "genre": "house", "spotify_url": "", "youtube_url": ""},
+  {"id": "004", "title": "Titanium", "artist": "David Guetta ft. Sia", "bpm": 126.0, "key": "F#", "energy": 2.8, "valence": 0.55, "danceability": 0.88, "genre": "edm", "spotify_url": "", "youtube_url": ""},
+  {"id": "005", "title": "Blinding Lights", "artist": "The Weeknd", "bpm": 171.0, "key": "F", "energy": 2.3, "valence": 0.33, "danceability": 0.51, "genre": "synth-pop", "spotify_url": "", "youtube_url": ""},
+  {"id": "006", "title": "Levitating", "artist": "Dua Lipa", "bpm": 103.0, "key": "B", "energy": 2.1, "valence": 0.72, "danceability": 0.82, "genre": "pop", "spotify_url": "", "youtube_url": ""},
+  {"id": "007", "title": "Ghost", "artist": "Justin Bieber", "bpm": 96.0, "key": "E", "energy": 1.4, "valence": 0.42, "danceability": 0.62, "genre": "pop", "spotify_url": "", "youtube_url": ""},
+  {"id": "008", "title": "Bad Guy", "artist": "Billie Eilish", "bpm": 135.0, "key": "G#", "energy": 1.8, "valence": 0.56, "danceability": 0.78, "genre": "alt-pop", "spotify_url": "", "youtube_url": ""},
+  {"id": "009", "title": "Rockstar", "artist": "DaBaby ft. Roddy Ricch", "bpm": 89.9, "key": "A", "energy": 2.2, "valence": 0.49, "danceability": 0.75, "genre": "hip-hop", "spotify_url": "", "youtube_url": ""},
+  {"id": "010", "title": "HUMBLE.", "artist": "Kendrick Lamar", "bpm": 150.0, "key": "E", "energy": 2.6, "valence": 0.42, "danceability": 0.90, "genre": "hip-hop", "spotify_url": "", "youtube_url": ""},
+  {"id": "011", "title": "goosebumps", "artist": "Travis Scott", "bpm": 83.0, "key": "B", "energy": 2.4, "valence": 0.38, "danceability": 0.84, "genre": "hip-hop", "spotify_url": "", "youtube_url": ""},
+  {"id": "012", "title": "Starboy", "artist": "The Weeknd ft. Daft Punk", "bpm": 186.0, "key": "F#", "energy": 2.2, "valence": 0.59, "danceability": 0.80, "genre": "synth-pop", "spotify_url": "", "youtube_url": ""},
+  {"id": "013", "title": "One Dance", "artist": "Drake", "bpm": 104.0, "key": "C#", "energy": 1.6, "valence": 0.61, "danceability": 0.79, "genre": "afrobeats", "spotify_url": "", "youtube_url": ""},
+  {"id": "014", "title": "Lean On", "artist": "Major Lazer & DJ Snake", "bpm": 98.0, "key": "F#", "energy": 2.0, "valence": 0.68, "danceability": 0.81, "genre": "edm", "spotify_url": "", "youtube_url": ""},
+  {"id": "015", "title": "Sicko Mode", "artist": "Travis Scott", "bpm": 155.0, "key": "B", "energy": 2.7, "valence": 0.44, "danceability": 0.83, "genre": "hip-hop", "spotify_url": "", "youtube_url": ""},
+  {"id": "016", "title": "Without Me", "artist": "Halsey", "bpm": 159.0, "key": "C#", "energy": 1.9, "valence": 0.35, "danceability": 0.67, "genre": "alt-pop", "spotify_url": "", "youtube_url": ""},
+  {"id": "017", "title": "Circles", "artist": "Post Malone", "bpm": 120.0, "key": "A", "energy": 1.5, "valence": 0.48, "danceability": 0.69, "genre": "pop", "spotify_url": "", "youtube_url": ""},
+  {"id": "018", "title": "SAD!", "artist": "XXXTENTACION", "bpm": 74.0, "key": "D", "energy": 1.2, "valence": 0.21, "danceability": 0.54, "genre": "emo-rap", "spotify_url": "", "youtube_url": ""},
+  {"id": "019", "title": "Dákiti", "artist": "Bad Bunny & Jhay Cortez", "bpm": 96.0, "key": "G#", "energy": 1.8, "valence": 0.75, "danceability": 0.87, "genre": "reggaeton", "spotify_url": "", "youtube_url": ""},
+  {"id": "020", "title": "Pepas", "artist": "Farruko", "bpm": 128.0, "key": "F", "energy": 2.3, "valence": 0.82, "danceability": 0.94, "genre": "reggaeton", "spotify_url": "", "youtube_url": ""}
+]

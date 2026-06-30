@@ -1,0 +1,17 @@
+# Environment variables - NEVER commit this
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Temp audio files
+temp_*
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
