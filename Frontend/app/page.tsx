@@ -60,28 +60,41 @@ export default function Home() {
   };
 
   const handleSubmit = async () => {
-    if (!file) return;
-    setLoading(true);
-    setError(null);
-    setResults(null);
+  if (!file) return;
+  setLoading(true);
+  setError(null);
+  setResults(null);
 
-    const formData = new FormData();
-    formData.append('file', file);
+  const formData = new FormData();
+  formData.append('file', file);
 
-    try {
-      const res = await fetch(
-        `http://localhost:8000/recommend?n=${numResults}`,
-        { method: 'POST', body: formData }
-      );
-      if (!res.ok) throw new Error('Something went wrong');
-      const data: RecommendResponse = await res.json();
-      setResults(data);
-    } catch (err) {
-      setError('Failed to get recommendations. Make sure your backend is running.');
-    } finally {
-      setLoading(false);
+  try {
+    // Get the current session token
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      router.push('/auth');
+      return;
     }
-  };
+
+    const res = await fetch(
+      `http://localhost:8000/recommend?n=${numResults}`,
+      {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`
+        }
+      }
+    );
+    if (!res.ok) throw new Error('Something went wrong');
+    const data: RecommendResponse = await res.json();
+    setResults(data);
+  } catch (err) {
+    setError('Failed to get recommendations. Make sure your backend is running.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const keyColors: Record<string, string> = {
     'C': '#ff6b6b', 'C#': '#ff8e53', 'D': '#feca57',
