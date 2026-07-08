@@ -163,6 +163,20 @@ export default function Home() {
                 History
               </button>
               <button
+                onClick={() => router.push('/profile')} 
+                style={{
+                  padding: '8px 16px',
+                  background: 'transparent',
+                  border: '1px solid #2a2a2a',
+                  borderRadius: '8px',
+                  color: '#666',
+                  fontSize: '13px',
+                  cursor: 'pointer'
+                }}
+              >
+                Profile
+              </button>
+              <button
                 onClick={handleSignOut}
                 style={{
                   padding: '8px 16px',
