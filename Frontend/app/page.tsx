@@ -42,17 +42,14 @@ export default function Home() {
   const supabase = createClient();
 
   useEffect(() => {
-  const checkUser = async () => {
-    console.log('Checking auth...');
-    const { data: { user }, error } = await supabase.auth.getUser();
-    console.log('User:', user);
-    console.log('Error:', error);
-    if (!user) router.push('/auth');
-    else setUser(user);
-    setAuthLoading(false);
-  };
-  checkUser();
-}, []);
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) router.push('/auth');
+      else setUser(user);
+      setAuthLoading(false);
+    };
+    checkUser();
+  }, []);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -60,41 +57,40 @@ export default function Home() {
   };
 
   const handleSubmit = async () => {
-  if (!file) return;
-  setLoading(true);
-  setError(null);
-  setResults(null);
+    if (!file) return;
+    setLoading(true);
+    setError(null);
+    setResults(null);
 
-  const formData = new FormData();
-  formData.append('file', file);
+    const formData = new FormData();
+    formData.append('file', file);
 
-  try {
-    // Get the current session token
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) {
-      router.push('/auth');
-      return;
-    }
-
-    const res = await fetch(
-      `http://localhost:8000/recommend?n=${numResults}`,
-      {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Authorization': `Bearer ${session.access_token}`
-        }
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        router.push('/auth');
+        return;
       }
-    );
-    if (!res.ok) throw new Error('Something went wrong');
-    const data: RecommendResponse = await res.json();
-    setResults(data);
-  } catch (err) {
-    setError('Failed to get recommendations. Make sure your backend is running.');
-  } finally {
-    setLoading(false);
-  }
-};
+
+      const res = await fetch(
+        `http://localhost:8000/recommend?n=${numResults}`,
+        {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`
+          }
+        }
+      );
+      if (!res.ok) throw new Error('Something went wrong');
+      const data: RecommendResponse = await res.json();
+      setResults(data);
+    } catch (err) {
+      setError('Failed to get recommendations. Make sure your backend is running.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const keyColors: Record<string, string> = {
     'C': '#ff6b6b', 'C#': '#ff8e53', 'D': '#feca57',
@@ -151,20 +147,36 @@ export default function Home() {
             <p style={{ color: '#555', fontSize: '12px', margin: '0 0 8px' }}>
               {user?.email}
             </p>
-            <button
-              onClick={handleSignOut}
-              style={{
-                padding: '8px 16px',
-                background: 'transparent',
-                border: '1px solid #2a2a2a',
-                borderRadius: '8px',
-                color: '#666',
-                fontSize: '13px',
-                cursor: 'pointer'
-              }}
-            >
-              Sign out
-            </button>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button
+                onClick={() => router.push('/history')}
+                style={{
+                  padding: '8px 16px',
+                  background: 'transparent',
+                  border: '1px solid #2a2a2a',
+                  borderRadius: '8px',
+                  color: '#666',
+                  fontSize: '13px',
+                  cursor: 'pointer'
+                }}
+              >
+                History
+              </button>
+              <button
+                onClick={handleSignOut}
+                style={{
+                  padding: '8px 16px',
+                  background: 'transparent',
+                  border: '1px solid #2a2a2a',
+                  borderRadius: '8px',
+                  color: '#666',
+                  fontSize: '13px',
+                  cursor: 'pointer'
+                }}
+              >
+                Sign out
+              </button>
+            </div>
           </div>
         </div>
       </div>
