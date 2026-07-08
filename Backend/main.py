@@ -1,9 +1,11 @@
 from fastapi import FastAPI, UploadFile, File, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import HTTPAuthorizationCredentials
 from analyzer import analyze_audio
 from matcher import find_similar
 from explainer import explain_match
-from auth import verify_token
+from auth import verify_token, security
+from database import save_analysis
 import shutil, os
 
 app = FastAPI()
@@ -38,21 +40,37 @@ async def analyze(
 async def recommend(
     file: UploadFile = File(...),
     n: int = 5,
-    user=Depends(verify_token)
+    user=Depends(verify_token),
+    credentials: HTTPAuthorizationCredentials = Depends(security)
 ):
     temp_path = f"temp_{file.filename}"
     with open(temp_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     try:
+        # Analyse audio
         features = analyze_audio(temp_path)
         features["filename"] = file.filename
+
+        # Find similar songs
         matches = find_similar(features, n=n)
+
+        # Generate Claude explanations
         for match in matches:
             match["why"] = explain_match(features, match)
+
+        # Save to database
+        user_id = user.get("sub")
+        save_analysis(
+            user_id=user_id,
+            user_jwt=credentials.credentials,
+            features=features,
+            recommendations=matches
+        )
+
         return {
             "input_track": features,
             "recommendations": matches,
-            "user_id": user.get("sub")
+            "user_id": user_id
         }
     finally:
         os.remove(temp_path)
