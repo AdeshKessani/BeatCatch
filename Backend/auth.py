@@ -9,6 +9,9 @@ load_dotenv()
 
 SUPABASE_JWKS_URL = os.getenv("SUPABASE_JWKS_URL")
 
+if not SUPABASE_JWKS_URL:
+    raise RuntimeError("SUPABASE_JWKS_URL environment variable is not set")
+
 security = HTTPBearer()
 jwks_client = PyJWKClient(SUPABASE_JWKS_URL)
 

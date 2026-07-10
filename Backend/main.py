@@ -10,9 +10,16 @@ import shutil, os
 
 app = FastAPI()
 
+import os
+
+origins = [
+    "http://localhost:3000",
+    "https://beatcatch-sepia.vercel.app",
+    os.getenv("FRONTEND_URL", "http://localhost:3000")
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

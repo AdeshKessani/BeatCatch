@@ -73,7 +73,7 @@ export default function Home() {
       }
 
       const res = await fetch(
-        `http://localhost:8000/recommend?n=${numResults}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/recommend?n=${numResults}`,
         {
           method: 'POST',
           body: formData,

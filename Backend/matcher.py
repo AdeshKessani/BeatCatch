@@ -1,10 +1,10 @@
 import json
+import os
 import numpy as np
 from pathlib import Path
 
 # Load catalog once at startup
-CATALOG_PATH = Path(__file__).parent.parent / "data" / "catalog.json"
-
+CATALOG_PATH = Path(__file__).parent / "data" / "catalog.json"
 def load_catalog():
     with open(CATALOG_PATH, "r") as f:
         return json.load(f)

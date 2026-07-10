@@ -21,9 +21,14 @@ export default function AuthPage() {
       if (error) setError(error.message);
       else router.push('/');
     } else {
-      const { error } = await supabase.auth.signUp({ email, password });
-      if (error) setError(error.message);
-      else setError('Account created! You can now log in.');
+      const { data, error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        setError(error.message);
+      } else if (data.user && data.user.identities && data.user.identities.length === 0) {
+        setError('An account with this email already exists. Please log in instead.');
+      } else {
+        setError('Account created! You can now log in.');
+      }
     }
 
     setLoading(false);

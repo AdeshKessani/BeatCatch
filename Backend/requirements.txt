@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+librosa
+numpy
+scipy
+scikit-learn
+anthropic
+python-dotenv
+requests
+PyJWT
+cryptography
+supabase
+slowapi
+soundfile
+audioread
+musicbrainzngs
+python-multipart
